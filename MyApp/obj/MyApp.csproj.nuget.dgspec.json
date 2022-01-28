@@ -41,6 +41,10 @@
             "Humanizer": {
               "target": "Package",
               "version": "[2.13.14, )"
+            },
+            "System.IO": {
+              "target": "Package",
+              "version": "[4.3.0, )"
             }
           },
           "imports": [

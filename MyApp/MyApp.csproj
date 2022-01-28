@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Humanizer" Version="2.13.14" />
+    <PackageReference Include="System.IO" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
