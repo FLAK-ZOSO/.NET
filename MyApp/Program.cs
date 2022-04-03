@@ -3,16 +3,32 @@ using System;
 
 
 var currentDirectory = Directory.GetCurrentDirectory();
-// Read a file and convert it to a string
-var salesFile = File.ReadAllText(currentDirectory + "\\stores.txt");
-// Convert the string to a list of strings
-var sales = salesFile.Split(',');
-// Convert the list of strings to a list of integers
-var salesInt = sales.Select(int.Parse).ToList();
-// Get the sum of the integers
-var totalSales = salesInt.Sum();
-// Print the total sales
-Console.WriteLine($"Total sales: {totalSales}");
+var storesDirectory = Path.Combine(currentDirectory, "stores");
+
+var salesFiles = FindFiles(storesDirectory);
+    
+foreach (var file in salesFiles)
+{
+    Console.WriteLine(file);
+}
+
+IEnumerable<string> FindFiles(string folderName)
+{
+    List<string> salesFiles = new List<string>();
+
+    var foundFiles = Directory.EnumerateFiles(folderName, "*", SearchOption.AllDirectories);
+
+    foreach (var file in foundFiles)
+    {
+        var extension = Path.GetExtension(file);
+        if (extension == ".json")
+        {
+            salesFiles.Add(file);
+        }
+    }
+
+    return salesFiles;
+}
 
 /*
 using Humanizer;
